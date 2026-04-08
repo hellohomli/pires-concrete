@@ -17,6 +17,12 @@
     --concrete:   #ECEAE5;
     --line:       rgba(58,56,53,0.1);
     --line-lt:    rgba(255,255,255,0.14);
+    --srv1:       #B8923A; --srv1-lt: #F5EAD0;
+    --srv2:       #6B8C7A; --srv2-lt: #DFF0E8;
+    --srv3:       #7A7A9C; --srv3-lt: #E8E8F5;
+    --srv4:       #B5714A; --srv4-lt: #F5E2D4;
+    --srv5:       #4A7A8C; --srv5-lt: #D6EDF3;
+    --srv6:       #8C6B6B; --srv6-lt: #F3E2E2;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -137,17 +143,52 @@
 
   .section-note { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--grey); max-width: 280px; text-align: right; align-self: flex-end; }
 
-  .service-row { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--line); cursor: default; position: relative; }
-  .service-row::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--gold); transition: width 0.4s ease; }
+  .service-row { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--line); cursor: default; position: relative; transition: background 0.25s; }
+  .service-row::before { content: ''; position: absolute; left: -64px; top: 0; bottom: 0; width: 0; transition: width 0.35s ease; opacity: 0.08; pointer-events: none; }
+  .service-row:hover::before { width: calc(100% + 128px); }
+  .service-row::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; transition: width 0.4s ease; }
   .service-row:hover::after { width: 100%; }
   .service-row:first-child { border-top: 1px solid var(--line); }
 
-  .srv-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; color: var(--gold); }
+  .service-row[data-c="1"]::before, .service-row[data-c="1"]::after { background: var(--srv1); }
+  .service-row[data-c="2"]::before, .service-row[data-c="2"]::after { background: var(--srv2); }
+  .service-row[data-c="3"]::before, .service-row[data-c="3"]::after { background: var(--srv3); }
+  .service-row[data-c="4"]::before, .service-row[data-c="4"]::after { background: var(--srv4); }
+  .service-row[data-c="5"]::before, .service-row[data-c="5"]::after { background: var(--srv5); }
+  .service-row[data-c="6"]::before, .service-row[data-c="6"]::after { background: var(--srv6); }
+
+  .srv-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; transition: color 0.2s; color: var(--grey); }
+  .srv-tag { display: inline-block; font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 7px; border-radius: 2px; transition: background 0.2s, color 0.2s; }
+
+  .service-row[data-c="1"] .srv-num { color: var(--srv1); }
+  .service-row[data-c="1"] .srv-tag { background: var(--srv1-lt); color: var(--srv1); }
+  .service-row[data-c="2"] .srv-num { color: var(--srv2); }
+  .service-row[data-c="2"] .srv-tag { background: var(--srv2-lt); color: var(--srv2); }
+  .service-row[data-c="3"] .srv-num { color: var(--srv3); }
+  .service-row[data-c="3"] .srv-tag { background: var(--srv3-lt); color: var(--srv3); }
+  .service-row[data-c="4"] .srv-num { color: var(--srv4); }
+  .service-row[data-c="4"] .srv-tag { background: var(--srv4-lt); color: var(--srv4); }
+  .service-row[data-c="5"] .srv-num { color: var(--srv5); }
+  .service-row[data-c="5"] .srv-tag { background: var(--srv5-lt); color: var(--srv5); }
+  .service-row[data-c="6"] .srv-num { color: var(--srv6); }
+  .service-row[data-c="6"] .srv-tag { background: var(--srv6-lt); color: var(--srv6); }
+
   .srv-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; margin-bottom: 6px; transition: color 0.2s; }
-  .service-row:hover .srv-title { color: var(--gold); }
+  .service-row[data-c="1"]:hover .srv-title { color: var(--srv1); }
+  .service-row[data-c="2"]:hover .srv-title { color: var(--srv2); }
+  .service-row[data-c="3"]:hover .srv-title { color: var(--srv3); }
+  .service-row[data-c="4"]:hover .srv-title { color: var(--srv4); }
+  .service-row[data-c="5"]:hover .srv-title { color: var(--srv5); }
+  .service-row[data-c="6"]:hover .srv-title { color: var(--srv6); }
+
   .srv-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--grey); }
   .srv-arrow { font-size: 20px; color: rgba(15,15,14,0.15); transition: color 0.2s, transform 0.2s; }
-  .service-row:hover .srv-arrow { color: var(--gold); transform: translateX(4px); }
+  .service-row[data-c="1"]:hover .srv-arrow { color: var(--srv1); transform: translateX(4px); }
+  .service-row[data-c="2"]:hover .srv-arrow { color: var(--srv2); transform: translateX(4px); }
+  .service-row[data-c="3"]:hover .srv-arrow { color: var(--srv3); transform: translateX(4px); }
+  .service-row[data-c="4"]:hover .srv-arrow { color: var(--srv4); transform: translateX(4px); }
+  .service-row[data-c="5"]:hover .srv-arrow { color: var(--srv5); transform: translateX(4px); }
+  .service-row[data-c="6"]:hover .srv-arrow { color: var(--srv6); transform: translateX(4px); }
 
   /* ABOUT */
   .about { background: var(--concrete); padding: 80px 64px 120px; position: relative; overflow: hidden; }
@@ -374,49 +415,55 @@
       <p class="section-note">Concrete work of any kind — residential and commercial — across the Okanagan Valley.</p>
     </div>
     <div>
-      <div class="service-row">
+      <div class="service-row" data-c="1">
         <span class="srv-num">01</span>
         <div>
+          <span class="srv-tag">Residential</span>
           <div class="srv-title">Foundations</div>
           <div class="srv-desc">New home foundations, additions, and basements — engineered for Okanagan soil and built to last generations.</div>
         </div>
         <span class="srv-arrow">→</span>
       </div>
-      <div class="service-row">
+      <div class="service-row" data-c="2">
         <span class="srv-num">02</span>
         <div>
+          <span class="srv-tag">Flatwork</span>
           <div class="srv-title">Driveways &amp; Flatwork</div>
           <div class="srv-desc">Driveways, garage slabs, and flatwork in broom finish, exposed aggregate, or stamped concrete.</div>
         </div>
         <span class="srv-arrow">→</span>
       </div>
-      <div class="service-row">
+      <div class="service-row" data-c="3">
         <span class="srv-num">03</span>
         <div>
+          <span class="srv-tag">Outdoor</span>
           <div class="srv-title">Patios &amp; Outdoor Living</div>
           <div class="srv-desc">Decorative concrete patios, pool surrounds, and outdoor entertaining spaces designed to complement your home.</div>
         </div>
         <span class="srv-arrow">→</span>
       </div>
-      <div class="service-row">
+      <div class="service-row" data-c="4">
         <span class="srv-num">04</span>
         <div>
+          <span class="srv-tag">Commercial</span>
           <div class="srv-title">Commercial Concrete</div>
           <div class="srv-desc">Warehouse floors, commercial foundations, parking areas, and large-scale site work. On schedule, on spec.</div>
         </div>
         <span class="srv-arrow">→</span>
       </div>
-      <div class="service-row">
+      <div class="service-row" data-c="5">
         <span class="srv-num">05</span>
         <div>
+          <span class="srv-tag">Structural</span>
           <div class="srv-title">Retaining Walls</div>
           <div class="srv-desc">Poured and block retaining structures for grade changes, landscaping, and erosion control across the Valley.</div>
         </div>
         <span class="srv-arrow">→</span>
       </div>
-      <div class="service-row">
+      <div class="service-row" data-c="6">
         <span class="srv-num">06</span>
         <div>
+          <span class="srv-tag">Repairs</span>
           <div class="srv-title">Repairs &amp; Restoration</div>
           <div class="srv-desc">Honest assessment and expert repair of cracking, heaving, or failing concrete — residential and commercial.</div>
         </div>
