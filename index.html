@@ -191,7 +191,7 @@
   .service-row[data-c="6"]:hover .srv-arrow { color: var(--srv6); transform: translateX(4px); }
 
   /* ABOUT */
-  .about { background: var(--concrete); padding: 80px 64px 120px; position: relative; overflow: hidden; }
+  .about { background: var(--white); padding: 80px 64px 120px; position: relative; overflow: hidden; }
   .about::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; border: 1px solid rgba(58,56,53,0.07); bottom: -200px; left: -100px; pointer-events: none; }
 
   .about-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; position: relative; z-index: 1; }
@@ -205,8 +205,8 @@
   .about-sig span { display: block; font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); margin-top: 6px; }
 
   .testimonials { display: flex; flex-direction: column; gap: 2px; }
-  .testimonial { background: rgba(255,255,255,0.55); border: 1px solid rgba(58,56,53,0.08); padding: 36px 40px; transition: background 0.2s; }
-  .testimonial:hover { background: rgba(255,255,255,0.8); }
+  .testimonial { background: var(--white); border: 1px solid rgba(58,56,53,0.08); padding: 36px 40px; transition: background 0.2s, box-shadow 0.2s; box-shadow: 0 2px 16px rgba(58,56,53,0.07); }
+  .testimonial:hover { background: var(--white); box-shadow: 0 4px 28px rgba(58,56,53,0.11); }
 
   .t-review-source { margin-bottom: 4px; }
   .t-stars { color: var(--gold); font-size: 12px; letter-spacing: 3px; margin-bottom: 16px; }
@@ -388,7 +388,7 @@
       </p>
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="stat-n">15+</div>
+          <div class="stat-n">20+</div>
           <div class="stat-l">Years in Business</div>
         </div>
         <div class="hero-stat">
